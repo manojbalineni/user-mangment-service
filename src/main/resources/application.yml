@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/busdb
+    username: root
+    password: Manoj@510
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
