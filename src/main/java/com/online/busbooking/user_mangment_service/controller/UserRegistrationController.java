@@ -4,6 +4,7 @@ package com.online.busbooking.user_mangment_service.controller;
 import com.online.busbooking.user_mangment_service.model.SuccessResponseDTO;
 import com.online.busbooking.user_mangment_service.model.UserRegisterDTO;
 import com.online.busbooking.user_mangment_service.service.UserRegistrationService;
+import jakarta.mail.MessagingException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ public class UserRegistrationController {
     }
 
     @PostMapping(value = "/register")
-    public SuccessResponseDTO registerUser(@RequestBody UserRegisterDTO userRegisterDTO){
+    public SuccessResponseDTO registerUser(@RequestBody UserRegisterDTO userRegisterDTO) throws MessagingException {
         return userRegistrationService.registerUserDetails(userRegisterDTO);
     }
 }

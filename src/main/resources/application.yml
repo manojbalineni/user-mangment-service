@@ -9,3 +9,23 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: manoj.balineni04@gmail.com
+    password: ziac dsqc vzhn rawa
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+
+
+
