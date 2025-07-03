@@ -18,7 +18,20 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<Object> handleUserAlreadyExistsException(UserAlreadyExistsException exception){
-        Object error =  responseHandler.generateErrorMessage(exception);
+        Object error =  responseHandler.generateErrorMessage(exception.getCode() , exception.getMessage(),exception.getHttpStatus());
         return new ResponseEntity<>(error , exception.getHttpStatus());
     }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<Object> handleInvalidCredentailsException(InvalidCredentialsException exception){
+        Object error = responseHandler.generateErrorMessage(exception.getCode() , exception.getMessage() , exception.getHttpStatus());
+        return new ResponseEntity<>(error , exception.getHttpStatus());
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException exception){
+        Object error = responseHandler.generateErrorMessage(exception.getCode() , exception.getMessage() , exception.getHttpStatus());
+        return new ResponseEntity<>(error , exception.getHttpStatus());
+    }
+
 }

@@ -30,6 +30,19 @@ public class UserEntity {
 
     private String email;
 
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private int registerEmail;
+
+
     public int getRegisterEmail() {
         return registerEmail;
     }
@@ -39,7 +52,6 @@ public class UserEntity {
     }
 
 
-    private int registerEmail;
 
 
     public int getId() {

@@ -1,6 +1,7 @@
 package com.online.busbooking.user_mangment_service.util;
 
 import com.online.busbooking.user_mangment_service.exception.UserAlreadyExistsException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -12,12 +13,12 @@ import java.util.Map;
 public class ResponseHandler {
 
 
-    public Map<String,Object> generateErrorMessage(UserAlreadyExistsException exception) {
+    public Map<String,Object> generateErrorMessage(String code , String message , HttpStatus httpStatus) {
         HashMap<String,Object> error = new HashMap<>();
         error.put("timestamp" , getTimeStamp());
-        error.put("errorCode" , exception.getCode());
-        error.put("errorMessage" , exception.getMessage());
-        error.put("httpStatus" , exception.getHttpStatus().value());
+        error.put("errorCode" , code);
+        error.put("errorMessage" , message);
+        error.put("httpStatus" ,httpStatus.value());
         return error;
     }
 
