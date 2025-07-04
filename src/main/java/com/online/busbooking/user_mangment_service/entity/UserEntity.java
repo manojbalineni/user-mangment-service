@@ -27,32 +27,11 @@ public class UserEntity {
     private Gender gender;
 
     private String mobileNumber;
-
     private String email;
-
     private String password;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     private int registerEmail;
-
-
-    public int getRegisterEmail() {
-        return registerEmail;
-    }
-
-    public void setRegisterEmail(int registerEmail) {
-        this.registerEmail = registerEmail;
-    }
-
-
-
+    private boolean active;
+    private String token;
 
     public int getId() {
         return id;
@@ -100,5 +79,37 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getRegisterEmail() {
+        return registerEmail;
+    }
+
+    public void setRegisterEmail(int registerEmail) {
+        this.registerEmail = registerEmail;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

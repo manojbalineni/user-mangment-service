@@ -9,4 +9,6 @@ import jakarta.mail.MessagingException;
 public interface UserRegistrationService {
     public SuccessResponseDTO registerUserDetails(UserRegisterDTO userRegisterDTO) throws MessagingException;
     public LoginResponseDTO loginUser(LoginRequestDTO loginRequestDTO);
+
+    public SuccessResponseDTO activateAccount(String token);
 }

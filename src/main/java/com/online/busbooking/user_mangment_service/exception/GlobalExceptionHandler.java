@@ -34,4 +34,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error , exception.getHttpStatus());
     }
 
+    @ExceptionHandler(AccountLockException.class)
+    public ResponseEntity<Object> handleAccountLockException(AccountLockException exception){
+        Object error = responseHandler.generateErrorMessage(exception.getCode() , exception.getMessage() , exception.getHttpStatus());
+        return new ResponseEntity<>(error , exception.getHttpStatus());
+    }
+
+    @ExceptionHandler(GenericException.class)
+    public ResponseEntity<Object> handleGenericException(GenericException exception){
+        Object error = responseHandler.generateErrorMessage(exception.getCode() , exception.getMessage() , exception.getHttpStatus());
+        return new ResponseEntity<>(error , exception.getHttpStatus());
+    }
+
+
+
 }

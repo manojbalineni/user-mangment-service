@@ -7,10 +7,7 @@ import com.online.busbooking.user_mangment_service.model.SuccessResponseDTO;
 import com.online.busbooking.user_mangment_service.model.UserRegisterDTO;
 import com.online.busbooking.user_mangment_service.service.UserRegistrationService;
 import jakarta.mail.MessagingException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -30,6 +27,10 @@ public class UserRegistrationController {
     @PostMapping(value = "/login")
     public LoginResponseDTO loginUser(@RequestBody LoginRequestDTO loginRequestDTO){
         return userRegistrationService.loginUser(loginRequestDTO);
+    }
 
+    @GetMapping(value = "/activate")
+    public SuccessResponseDTO activateAccount(@RequestParam(value = "token") String token){
+        return userRegistrationService.activateAccount(token);
     }
 }

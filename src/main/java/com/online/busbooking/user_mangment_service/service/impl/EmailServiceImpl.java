@@ -29,17 +29,17 @@ public class EmailServiceImpl {
 
 
     @Async
-    public void sendEmail(UserRegisterDTO userRegisterDTO) throws MessagingException {
+    public void sendEmail(UserRegisterDTO userRegisterDTO , String token) throws MessagingException {
         Context context = new Context();
-        context.setVariable("name" , userRegisterDTO.getName());
-
-        String htmlContent = templateEngine.process("success-register" , context);
+        context.setVariable("username" , userRegisterDTO.getName());
+        String activationLink = "http://localhost:8081/user/activate?token="+token;
+        context.setVariable("activationLink",activationLink);
+        String htmlContent = templateEngine.process("activation-email" , context);
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message);
-
         mimeMessageHelper.setTo(userRegisterDTO.getEmail());
         mimeMessageHelper.setText(htmlContent , true);
-        mimeMessageHelper.setSubject("Welcome to Our Services!");
+        mimeMessageHelper.setSubject("Account Activation");
         javaMailSender.send(message);
         UserEntity userEntity = userRegisterRepository.findByEmail(userRegisterDTO.getEmail());
         userEntity.setRegisterEmail(1);
